@@ -1,0 +1,15 @@
+spring:
+  kafka:
+    bootstrap-servers: "localhost:9092"
+    consumer:
+      value-deserializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
+      properties:
+        "[spring.json.value.default.type]": "edu.miu.sa.reservation.entity.Account"
+        "[spring.json.trusted.packages]": ["edu.miu.sa.reservation"]
+    producer:
+      value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
+      properties:
+        "[spring.json.add.type.headers]": false
+
+kafka:
+  topic: "topic1"
