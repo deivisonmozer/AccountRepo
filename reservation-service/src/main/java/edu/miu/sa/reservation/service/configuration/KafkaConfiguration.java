@@ -1,7 +1,6 @@
 package edu.miu.sa.reservation.service.configuration;
 
 import edu.miu.sa.reservation.entity.Account;
-import edu.miu.sa.reservation.entity.Student;
 import edu.miu.sa.reservation.repository.AccountRepository;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +21,6 @@ public class KafkaConfiguration {
 
     @Autowired
     private KafkaTemplate<String, Object> template;
-
-//    @Bean
-//    public NewTopic topic() {
-//        return TopicBuilder.name("topic1")
-//                .partitions(10)
-//                .replicas(1)
-//                .build();
-//    }
 
     @Bean
     public NewTopic newTopicGetAccountEvent() {
@@ -62,7 +53,6 @@ public class KafkaConfiguration {
     @Bean
     public ApplicationRunner runner(KafkaTemplate<String, Account> template) {
         return args -> {
-//            template.send("topic1", new Student(1, "Phat"));
             template.send("topic1", new Account(123,"value@mail.com", "1000 n 50th street", new String[]{"visa", "master"}));
         };
     }
