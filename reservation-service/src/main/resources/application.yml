@@ -10,6 +10,10 @@ spring:
       value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
       properties:
         "[spring.json.add.type.headers]": false
-
+  data:
+    mongodb:
+      host: "localhost"
+      port: "27017"
+      database: "accounts"
 kafka:
   topic: "topic1"
