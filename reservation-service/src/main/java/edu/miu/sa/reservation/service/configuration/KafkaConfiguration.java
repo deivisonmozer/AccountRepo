@@ -38,16 +38,12 @@ public class KafkaConfiguration {
                 .build();
     }
 
-//    @KafkaListener(id = "myId", topics = "topic1")
-//    public void listen(Account account) {
-//        System.out.println("Received: " + account);
-//    }
-
     @KafkaListener(id = "myId2", topics = "GET_ACCOUNT_EVENT")
     public void listenGetAccountEvent(Account account) {
         System.out.println("Received GET_ACCOUNT_EVENT: " + account);
         Account accountReturn = accountRepository.findAll().stream().filter(x->x.getEmail().equals(account.getEmail())).collect(Collectors.toList()).get(0);
-        template.send("RESPONSE_GET_ACCOUNT_EVENT", accountReturn);
+        if(accountReturn != null)
+            template.send("RESPONSE_GET_ACCOUNT_EVENT", accountReturn);
     }
 
     @Bean
