@@ -11,9 +11,15 @@ spring:
       properties:
         "[spring.json.add.type.headers]": false
   data:
-    mongodb:
-      host: "localhost"
-      port: "27017"
-      database: "accounts"
+    cassandra:
+      port: 9042
+      #contact-points: "localhost:9042"
+      contact-points: mycassandra
+      keyspace-name: account_ks
+      schema-action: create_if_not_exists
+      entity-base-package: edu.miu.sa.reservation.entity
+      #local-datacenter: datacenter1
 kafka:
-  topic: "topic1"
+  topic:
+    get: "GET_ACCOUNT_EVENT"
+    response: "RESPONSE_GET_ACCOUNT_EVENT"

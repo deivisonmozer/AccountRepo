@@ -2,6 +2,7 @@ package edu.miu.sa.reservation.controller;
 
 import edu.miu.sa.reservation.entity.Account;
 import edu.miu.sa.reservation.repository.AccountRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Slf4j
 public class AccountController {
     @Autowired
     private AccountRepository repository;

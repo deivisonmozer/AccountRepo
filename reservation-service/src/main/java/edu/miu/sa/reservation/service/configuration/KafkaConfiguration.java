@@ -53,7 +53,7 @@ public class KafkaConfiguration {
     @Bean
     public ApplicationRunner runner(KafkaTemplate<String, Account> template) {
         return args -> {
-            template.send("topic1", new Account(123,"value@mail.com", "1000 n 50th street", new String[]{"visa", "master"}));
+            //template.send("topic1", new Account("value@mail.com", "1000 n 50th street", new String[]{"visa", "master"}));
         };
     }
 }

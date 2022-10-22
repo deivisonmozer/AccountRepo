@@ -4,20 +4,21 @@ package edu.miu.sa.reservation.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@Document(collection = "account")
+@Table
 public class Account {
-    @Id
+    @PrimaryKey
     private int id;
     private String email;
     private String address;
-    private String[] payment;
+    @Column
+    private List<String> payment;
 }
