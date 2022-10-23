@@ -40,10 +40,10 @@ services:
     volumes:
       - account-vol:/var/lib/cassandra
 
-  volumes:
-    account-vol:
-      driver: local
+volumes:
+  account-vol:
+    driver: local
 
-  networks:
-    account-network:
-      driver: bridge
+networks:
+  account-network:
+    driver: bridge

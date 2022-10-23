@@ -11,9 +11,11 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Configuration
+//@EnableKafka
 public class KafkaConfiguration {
 
     @Autowired
@@ -38,13 +40,26 @@ public class KafkaConfiguration {
                 .build();
     }
 
+//    @Bean
+//    public CommonLoggingErrorHandler errorHandler() {
+//        return new CommonLoggingErrorHandler();
+//    }
+
     @KafkaListener(id = "myId2", topics = "GET_ACCOUNT_EVENT")
     public void listenGetAccountEvent(Account account) {
         System.out.println("Received GET_ACCOUNT_EVENT: " + account);
-        Account accountReturn = accountRepository.findAll().stream().filter(x->x.getEmail().equals(account.getEmail())).collect(Collectors.toList()).get(0);
-        if(accountReturn != null)
-            template.send("RESPONSE_GET_ACCOUNT_EVENT", accountReturn);
+        List<Account> accountReturn = accountRepository.findAll().stream().filter(x->x.getEmail().equals(account.getEmail())).collect(Collectors.toList());
+        if(accountReturn != null && accountReturn.size() > 0)
+            template.send("RESPONSE_GET_ACCOUNT_EVENT", accountReturn.get(0));
     }
+
+//    @KafkaListener(id = "myId3", topics = "GET_ACCOUNT_EVENT")
+//    public void listenGetAccountEventByEmail(String email) {
+//        System.out.println("Received GET_ACCOUNT_EVENT: " + email);
+//        List<Account> accountReturn = accountRepository.findAll().stream().filter(x->x.getEmail().equals(email)).collect(Collectors.toList());
+//        if(accountReturn != null && accountReturn.size() > 0)
+//            template.send("RESPONSE_GET_ACCOUNT_EVENT", accountReturn.get(0));
+//    }
 
     @Bean
     public ApplicationRunner runner(KafkaTemplate<String, Account> template) {

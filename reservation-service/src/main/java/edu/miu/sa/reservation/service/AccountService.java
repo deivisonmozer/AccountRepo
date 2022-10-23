@@ -14,7 +14,7 @@ public class AccountService {
     private final AccountRepository accountRepository;
 
     public Account findById(int id) {
-        return accountRepository.findById(id).orElseThrow(() -> new RuntimeException("Cannot find reservation: " + id));
+        return accountRepository.findById(id).orElseThrow(() -> new RuntimeException("Cannot find account: " + id));
     }
 
     public List<Account> findAll() {

@@ -43,12 +43,12 @@ class AccountRepositoryTest {
 
     @Test
     void testSave(){
-        List<String> l = new ArrayList<>();
-        l.add("visa");
-        l.add("master");
-        l.add("paypal");
+        List<String> paymentList = new ArrayList<>();
+        paymentList.add("visa");
+        paymentList.add("master");
+        paymentList.add("paypal");
 
-        Account account = new Account(123, "any street number","myemail@gmail.com", l);
+        Account account = new Account(123, "any street number","myemail@gmail.com", paymentList);
         testRepo.save(account);
 
         ArgumentCaptor<Account> arg = ArgumentCaptor.forClass(Account.class);
