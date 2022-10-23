@@ -1,6 +1,6 @@
 spring:
   kafka:
-    bootstrap-servers: "localhost:9092"
+    bootstrap-servers: "34.70.213.71:9092"
     consumer:
       value-deserializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
       properties:
@@ -21,5 +21,5 @@ spring:
       #local-datacenter: datacenter1
 kafka:
   topic:
-    get: "GET_ACCOUNT_EVENT"
+    get: "topic1"
     response: "RESPONSE_GET_ACCOUNT_EVENT"

@@ -1,39 +1,38 @@
 package edu.miu.sa.reservation.controller;
 
 import edu.miu.sa.reservation.entity.Account;
-import edu.miu.sa.reservation.repository.AccountRepository;
+import edu.miu.sa.reservation.service.AccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @Slf4j
 public class AccountController {
     @Autowired
-    private AccountRepository repository;
+    private AccountService service;
 
     @PostMapping("/addAccount")
     public String saveAccount(@RequestBody Account account) {
-        repository.save(account);
+        service.save(account);
         return "Added account with id : " + account.getId();
     }
 
     @GetMapping("/findAllAccounts")
     public List<Account> getAccounts() {
-        return repository.findAll();
+        return service.findAll();
     }
 
     @GetMapping("/findAllAccounts/{id}")
-    public Optional<Account> getAccounts(@PathVariable int id) {
-        return repository.findById(id);
+    public Account getAccounts(@PathVariable int id) {
+        return service.findById(id);
     }
 
     @DeleteMapping("/delete/{id}")
     public String deleteAccount(@PathVariable int id) {
-        repository.deleteById(id);
+        service.deleteById(id);
         return "Account deleted with id : " + id;
     }
 }

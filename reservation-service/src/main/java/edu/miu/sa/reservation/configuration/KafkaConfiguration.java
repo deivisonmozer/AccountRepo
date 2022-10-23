@@ -1,4 +1,4 @@
-package edu.miu.sa.reservation.service.configuration;
+package edu.miu.sa.reservation.configuration;
 
 import edu.miu.sa.reservation.entity.Account;
 import edu.miu.sa.reservation.repository.AccountRepository;
