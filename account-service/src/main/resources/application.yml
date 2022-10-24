@@ -23,5 +23,3 @@ kafka:
     get: "GET_ACCOUNT_EVENT"
     response: "RESPONSE_GET_ACCOUNT_EVENT"
     created: "ACCOUNT_CREATED_EVENT"
-    #test topic
-    topic1: "topic1"
