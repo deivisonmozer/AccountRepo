@@ -54,17 +54,4 @@ class AccountServiceApplicationTests {
 		when(accountRepository.findAll()).thenReturn(List.of());
 		assertThat(service.findAll()).isNotNull();
 	}
-
-//	@Test
-//	void should_save(){
-//		List<String> l = new ArrayList<>();
-//		l.add("visa");
-//		Account account = new Account(223124, "any street number","myemail@gmail.com", l);
-//		service.save(account);
-//		assertThat(account.getId()).isEqualTo(223124);
-//		assertThat(account.getEmail()).isEqualTo("myemail@gmail.com");
-//		assertThat(account.getAddress()).isEqualTo("any street number");
-//
-//
-//	}
 }

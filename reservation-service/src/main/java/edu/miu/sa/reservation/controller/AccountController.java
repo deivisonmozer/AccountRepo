@@ -37,10 +37,4 @@ public class AccountController {
         return service.findById(id);
     }
 
-//    @DeleteMapping("/delete/{id}")
-//    public String deleteAccount(@PathVariable int id) {
-//        service.deleteById(id);
-//        return "Account deleted with id : " + id;
-//    }
-
 }
