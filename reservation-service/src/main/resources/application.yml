@@ -1,8 +1,5 @@
-spring.profiles.active: dev
----
 spring:
   kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER}
     consumer:
       value-deserializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
       properties:
@@ -12,6 +9,35 @@ spring:
       value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
       properties:
         "[spring.json.add.type.headers]": false
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  kafka:
+    bootstrap-servers: "localhost:9092"
+  data:
+    cassandra:
+      port: 9042
+      contact-points: account-db
+      keyspace-name: account
+      schema-action: create_if_not_exists
+      entity-base-package: edu.miu.sa.reservation.entity
+kafka:
+  topic:
+    get: "GetAccountEvent"
+    response: "ResponseGetAccountEvent"
+    created: "AccountCreatedEvent"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER}
+  main:
+    allow-bean-definition-overriding: ${SPRING_ALLOW_BEAN_DEFINITION_OVERRIDING}
   data:
     cassandra:
       port: ${DB_PORT}
@@ -20,8 +46,9 @@ spring:
       schema-action: ${DB_SCHEME_ACTION}
       #entity-base-package: edu.miu.sa.reservation.entity
 kafka:
+  topic:
     get: ${ACCOUNT_REQUEST_TOPIC}
     response: ${ACCOUNT_GET_TOPIC}
     created: ${ACCOUNT_CREATED_TOPIC}
-#server:
-#  port: ${SERVICE_PORT}
+server:
+  port: ${SERVICE_PORT}

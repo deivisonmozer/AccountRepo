@@ -18,41 +18,16 @@ import java.util.stream.Collectors;
 @Configuration
 //@EnableKafka
 public class KafkaConfiguration {
-    @Value("${kafka.topic.get}")
-    private String topicGet;
+
     @Value("${kafka.topic.response}")
     private String topicResponse;
-    @Value("${kafka.topic.created}")
-    private String topicCreated;
+
     @Autowired
     private AccountRepository accountRepository;
 
     @Autowired
     private KafkaTemplate<String, Object> template;
 
-    @Bean
-    public NewTopic newTopicGetAccountEvent() {
-        return TopicBuilder.name(topicGet)
-                .partitions(10)
-                .replicas(1)
-                .build();
-    }
-
-    @Bean
-    public NewTopic newTopicResponseGetAccountEvent() {
-        return TopicBuilder.name(topicResponse)
-                .partitions(10)
-                .replicas(1)
-                .build();
-    }
-
-    @Bean
-    public NewTopic newTopicCreatedAccountEvent() {
-        return TopicBuilder.name(topicCreated)
-                .partitions(10)
-                .replicas(1)
-                .build();
-    }
     @KafkaListener(id = "myId2", topics = "GetAccountEvent")
     public void listenGetAccountEvent(Account account) {
         System.out.println("Received GET_ACCOUNT_EVENT: " + account);
