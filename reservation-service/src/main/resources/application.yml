@@ -20,8 +20,8 @@ spring:
       schema-action: ${DB_SCHEME_ACTION}
       #entity-base-package: edu.miu.sa.reservation.entity
 kafka:
-    get: ${KAFKA_GET_TOPIC}
-    response: ${KAFKA_RESPONSE_TOPIC}
-    created: ${KAFKA_CREATED_TOPIC}
+    get: ${ACCOUNT_REQUEST_TOPIC}
+    response: ${ACCOUNT_GET_TOPIC}
+    created: ${ACCOUNT_CREATED_TOPIC}
 #server:
 #  port: ${SERVICE_PORT}
