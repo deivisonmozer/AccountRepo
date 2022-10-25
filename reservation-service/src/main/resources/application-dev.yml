@@ -19,6 +19,6 @@ spring:
       entity-base-package: edu.miu.sa.reservation.entity
 kafka:
   topic:
-    get: "GET_ACCOUNT_EVENT"
-    response: "RESPONSE_GET_ACCOUNT_EVENT"
-    created: "ACCOUNT_CREATED_EVENT"
+    get: "GetAccountEvent"
+    response: "GetNotificationEvent"
+    created: "AccountCreatedEvent"

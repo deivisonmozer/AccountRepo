@@ -16,8 +16,8 @@ spring:
     cassandra:
       port: ${DB_PORT}
       contact-points: ${DB_CONTACT_POINT}
-      keyspace-name: ${DB_KEYSPACE_NAME}
-      schema-action: create_if_not_exists
+      keyspace-name: ${DB_ACCOUNT_KEYSPACE}
+      schema-action: ${DB_SCHEME_ACTION}
       #entity-base-package: edu.miu.sa.reservation.entity
 kafka:
     get: ${KAFKA_GET_TOPIC}
