@@ -23,5 +23,5 @@ kafka:
     get: ${KAFKA_GET_TOPIC}
     response: ${KAFKA_RESPONSE_TOPIC}
     created: ${KAFKA_CREATED_TOPIC}
-server:
-  port: ${SERVICE_PORT}
+#server:
+#  port: ${SERVICE_PORT}
