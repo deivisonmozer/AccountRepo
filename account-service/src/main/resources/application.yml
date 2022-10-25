@@ -1,0 +1,58 @@
+spring:
+  kafka:
+    consumer:
+      value-deserializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
+      properties:
+        "[spring.json.value.default.type]": "edu.miu.sa.account.entity.Account"
+        "[spring.json.trusted.packages]": "edu.miu.sa.account"
+    producer:
+      value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
+      properties:
+        "[spring.json.add.type.headers]": false
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER}
+  main:
+    allow-bean-definition-overriding: true
+  data:
+    cassandra:
+      contact-points: "127.0.0.1"
+      keyspace-name: account_ks
+      port: 9042
+      schema-action: CREATE_IF_NOT_EXISTS
+      entity-base-package: edu.miu.sa.account.entity
+      local-datacenter: datacenter1
+kafka:
+  topic:
+    get: "GET_ACCOUNT_EVENT"
+    response: "RESPONSE_GET_ACCOUNT_EVENT"
+    created: "ACCOUNT_CREATED_EVENT"
+---
+#spring:
+#  config:
+#    activate:
+#      on-profile: prod
+#  kafka:
+#    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER}
+#
+#  main:
+#    allow-bean-definition-overriding: true
+#  data:
+#    cassandra:
+##      contact-points: ${CASSANDRA_CONTACT_POINTS}
+#      keyspace-name: ${DB_KEYSPACE_NAME}
+#      port: ${CASSANDRA_PORT}
+#      schema-action: CREATE_IF_NOT_EXISTS
+#      local-datacenter: ${DB_DATA_CENTER}
+#kafka:
+#  topic:
+#    get: ${KAFKA_GET_TOPIC}
+#    response: ${KAFKA_RESPONSE_TOPIC}
+#    created: ${KAFKA_CREATED_TOPIC}
+#
+#server:
+#  port: ${SERVICE_PORT}
