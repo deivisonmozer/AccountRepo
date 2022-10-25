@@ -20,5 +20,5 @@ spring:
 kafka:
   topic:
     get: "GetAccountEvent"
-    response: "GetNotificationEvent"
+    response: "ResponseGetAccountEvent"
     created: "AccountCreatedEvent"

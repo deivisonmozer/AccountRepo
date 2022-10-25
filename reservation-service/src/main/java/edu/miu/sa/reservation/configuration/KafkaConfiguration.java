@@ -53,12 +53,12 @@ public class KafkaConfiguration {
                 .replicas(1)
                 .build();
     }
-    @KafkaListener(id = "myId2", topics = "GET_ACCOUNT_EVENT")
+    @KafkaListener(id = "myId2", topics = "GetAccountEvent")
     public void listenGetAccountEvent(Account account) {
         System.out.println("Received GET_ACCOUNT_EVENT: " + account);
         List<Account> accountReturn = accountRepository.findAll().stream().filter(x->x.getEmail().equals(account.getEmail())).collect(Collectors.toList());
         if(accountReturn != null && accountReturn.size() > 0)
-            template.send("RESPONSE_GET_ACCOUNT_EVENT", accountReturn.get(0));
+            template.send(topicResponse, accountReturn.get(0));
     }
 
     @Bean
