@@ -14,7 +14,7 @@ spring:
     cassandra:
       port: 9042
       contact-points: account-db
-      keyspace-name: account_ks
+      keyspace-name: account
       schema-action: create_if_not_exists
       entity-base-package: edu.miu.sa.reservation.entity
 kafka:
