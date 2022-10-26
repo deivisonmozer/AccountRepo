@@ -1,21 +1,21 @@
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: account-config
-
-data:
-  KAFKA_BOOTSTRAP_SERVER: localhost:9092
-  ACCOUNT_REQUEST_TOPIC : GetAccountEvent
-  ACCOUNT_GET_TOPIC: ResponseGetAccountEvent
-  ACCOUNT_CREATED_TOPIC: AccountCreatedEvent
-  ACCOUNT_ID: myId2
-
-  DB_CONTACT_POINT: account-db
-  DB_DATA_CENTER: datacenter1
-  DB_PORT: 9042
-  DB_SCHEME_ACTION: create_if_not_exists
-  DB_ACCOUNT_KEYSPACE: account
-
-  SERVICE_PORT: "8080"
-  SPRING_ALLOW_BEAN_DEFINITION_OVERRIDING: true
+#---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: account-config
+#
+#data:
+#  KAFKA_BOOTSTRAP_SERVER: localhost:9092
+#  ACCOUNT_REQUEST_TOPIC : GetAccountEvent
+#  ACCOUNT_GET_TOPIC: ResponseGetAccountEvent
+#  ACCOUNT_CREATED_TOPIC: AccountCreatedEvent
+#  ACCOUNT_ID: myId2
+#
+#  DB_CONTACT_POINT: account-db
+#  DB_DATA_CENTER: datacenter1
+#  DB_PORT: 9042
+#  DB_SCHEME_ACTION: create_if_not_exists
+#  DB_ACCOUNT_KEYSPACE: account
+#
+#  SERVICE_PORT: "8080"
+#  SPRING_ALLOW_BEAN_DEFINITION_OVERRIDING: true

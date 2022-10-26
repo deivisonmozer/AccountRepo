@@ -4,11 +4,12 @@ spring:
       value-deserializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
       properties:
         "[spring.json.value.default.type]": "edu.miu.sa.reservation.entity.Account"
-        "[spring.json.trusted.packages]": ["edu.miu.sa.reservation"]
+        "[spring.json.trusted.packages]": "edu.miu.sa.reservation"
     producer:
       value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
       properties:
         "[spring.json.add.type.headers]": false
+
 ---
 spring:
   config:
@@ -28,7 +29,6 @@ kafka:
     get: "GetAccountEvent"
     response: "ResponseGetAccountEvent"
     created: "AccountCreatedEvent"
-  id: "myId2"
 jwt:
   secret: "top_secret"
 ---
@@ -42,17 +42,20 @@ spring:
     allow-bean-definition-overriding: ${SPRING_ALLOW_BEAN_DEFINITION_OVERRIDING}
   data:
     cassandra:
+      contact-points: ${DB_CONTACT_POINTS}
       port: ${DB_PORT}
-      contact-points: ${DB_CONTACT_POINT}
       keyspace-name: ${DB_ACCOUNT_KEYSPACE}
       schema-action: ${DB_SCHEME_ACTION}
-      #entity-base-package: edu.miu.sa.reservation.entity
+      local-datacenter: ${DB_DATACENTER}
+      request:
+        timeout: ${DB_REQUEST_TIMEOUT}
+  zipkin:
+    baseUrl: ${ZIPKIN_SERVER}
 kafka:
   topic:
     get: ${ACCOUNT_REQUEST_TOPIC}
     response: ${ACCOUNT_GET_TOPIC}
     created: ${ACCOUNT_CREATED_TOPIC}
-  id: ${ACCOUNT_ID}
 server:
   port: ${SERVICE_PORT}
 
