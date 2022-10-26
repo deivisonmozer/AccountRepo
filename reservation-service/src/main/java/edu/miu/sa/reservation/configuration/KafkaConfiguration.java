@@ -28,7 +28,7 @@ public class KafkaConfiguration {
     @Autowired
     private KafkaTemplate<String, Object> template;
 
-    @KafkaListener(id = "myId2", topics = "GetAccountEvent")
+    @KafkaListener(id = "#{'${kafka.id}'}", topics ="#{'${kafka.topic.get}'}")
     public void listenGetAccountEvent(Account account) {
         System.out.println("Received GET_ACCOUNT_EVENT: " + account);
         List<Account> accountReturn = accountRepository.findAll().stream().filter(x->x.getEmail().equals(account.getEmail())).collect(Collectors.toList());

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -33,7 +34,7 @@ public class AccountController {
     }
 
     @GetMapping("/findAllAccounts/{id}")
-    public Account getAccounts(@PathVariable int id) {
+    public Optional<Account> getAccounts(@PathVariable int id) {
         return service.findById(id);
     }
 

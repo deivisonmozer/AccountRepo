@@ -9,6 +9,7 @@ data:
   ACCOUNT_REQUEST_TOPIC : GetAccountEvent
   ACCOUNT_GET_TOPIC: ResponseGetAccountEvent
   ACCOUNT_CREATED_TOPIC: AccountCreatedEvent
+  ACCOUNT_ID: myId2
 
   DB_CONTACT_POINT: account-db
   DB_DATA_CENTER: datacenter1

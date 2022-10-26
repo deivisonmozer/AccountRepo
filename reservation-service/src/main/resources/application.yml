@@ -28,6 +28,7 @@ kafka:
     get: "GetAccountEvent"
     response: "ResponseGetAccountEvent"
     created: "AccountCreatedEvent"
+  id: "myId2"
 jwt:
   secret: "top_secret"
 ---
@@ -51,6 +52,7 @@ kafka:
     get: ${ACCOUNT_REQUEST_TOPIC}
     response: ${ACCOUNT_GET_TOPIC}
     created: ${ACCOUNT_CREATED_TOPIC}
+  id: ${ACCOUNT_ID}
 server:
   port: ${SERVICE_PORT}
 
