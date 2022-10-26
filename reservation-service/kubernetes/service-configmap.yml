@@ -39,3 +39,14 @@ data:
   SPRING_ALLOW_BEAN_DEFINITION_OVERRIDING: "true"
 
   ZIPKIN_SERVER: http://zipkin:9411
+  ZIPKIN_ACCOUNT_SERVICE: account-service
+  ZIPKIN_AUTHENTICATION_SERVICE: authentication-service
+  ZIPKIN_BANK_SERVICE: bank-service
+  ZIPKIN_CREDIT_SERVICE: credit-service
+  ZIPKIN_NOTIFICATION_SERVICE: notification-service
+  ZIPKIN_PAYMENT_SERVICE: payment-service
+  ZIPKIN_PAYPAL_SERVICE: paypal-service
+  ZIPKIN_PROPERTY_SERVICE: property-service
+  ZIPKIN_RESERVATION_SERVICE: reservation-service
+
+  NOTIFICATION.MESSAGE.SEPARATOR: "<br/>"

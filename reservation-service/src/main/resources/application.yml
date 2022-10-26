@@ -24,6 +24,9 @@ spring:
       keyspace-name: account
       schema-action: create_if_not_exists
       entity-base-package: edu.miu.sa.reservation.entity
+  zipkin:
+    service:
+      name: "account-service"
 kafka:
   topic:
     get: "GetAccountEvent"
@@ -51,6 +54,8 @@ spring:
         timeout: ${DB_REQUEST_TIMEOUT}
   zipkin:
     baseUrl: ${ZIPKIN_SERVER}
+    service:
+      name: ${ZIPKIN_ACCOUNT_SERVICE}
 kafka:
   topic:
     get: ${ACCOUNT_REQUEST_TOPIC}
