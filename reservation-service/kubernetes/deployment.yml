@@ -38,9 +38,9 @@ spec:
               value: "prod"
           envFrom:
             - configMapRef:
-                name: account-configmap
+                name: service-configmap
             - secretRef:
-                name: account-secret
+                name: service-secret
           ports:
             - name: http
               containerPort: 8080

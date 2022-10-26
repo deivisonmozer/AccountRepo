@@ -28,7 +28,8 @@ kafka:
     get: "GetAccountEvent"
     response: "ResponseGetAccountEvent"
     created: "AccountCreatedEvent"
-
+jwt:
+  secret: "top_secret"
 ---
 spring:
   config:
@@ -52,3 +53,6 @@ kafka:
     created: ${ACCOUNT_CREATED_TOPIC}
 server:
   port: ${SERVICE_PORT}
+
+jwt:
+  secret: ${JWT_SECRET}

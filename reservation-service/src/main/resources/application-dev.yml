@@ -1,24 +1,24 @@
-spring:
-  kafka:
-    bootstrap-servers: "localhost:9092"
-    consumer:
-      value-deserializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
-      properties:
-        "[spring.json.value.default.type]": "edu.miu.sa.reservation.entity.Account"
-        "[spring.json.trusted.packages]": ["edu.miu.sa.reservation"]
-    producer:
-      value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
-      properties:
-        "[spring.json.add.type.headers]": false
-  data:
-    cassandra:
-      port: 9042
-      contact-points: account-db
-      keyspace-name: account
-      schema-action: create_if_not_exists
-      entity-base-package: edu.miu.sa.reservation.entity
-kafka:
-  topic:
-    get: "GetAccountEvent"
-    response: "ResponseGetAccountEvent"
-    created: "AccountCreatedEvent"
+#spring:
+#  kafka:
+#    bootstrap-servers: "localhost:9092"
+#    consumer:
+#      value-deserializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
+#      properties:
+#        "[spring.json.value.default.type]": "edu.miu.sa.reservation.entity.Account"
+#        "[spring.json.trusted.packages]": ["edu.miu.sa.reservation"]
+#    producer:
+#      value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
+#      properties:
+#        "[spring.json.add.type.headers]": false
+#  data:
+#    cassandra:
+#      port: 9042
+#      contact-points: account-db
+#      keyspace-name: account
+#      schema-action: create_if_not_exists
+#      entity-base-package: edu.miu.sa.reservation.entity
+#kafka:
+#  topic:
+#    get: "GetAccountEvent"
+#    response: "ResponseGetAccountEvent"
+#    created: "AccountCreatedEvent"
