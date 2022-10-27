@@ -35,7 +35,7 @@ class AccountRepositoryTest {
         l.add("visa");
         l.add("master");
         l.add("paypal");
-        Account account = new Account(123, "any street number","myemail@gmail.com", l);
+        Account account = new Account("any street number","myemail@gmail.com", l);
 
         List<Account> list = testRepo.findAll();
         Assert.assertNotNull(list);
@@ -48,7 +48,7 @@ class AccountRepositoryTest {
         paymentList.add("master");
         paymentList.add("paypal");
 
-        Account account = new Account(123, "any street number","myemail@gmail.com", paymentList);
+        Account account = new Account("any street number","myemail@gmail.com", paymentList);
         testRepo.save(account);
 
         ArgumentCaptor<Account> arg = ArgumentCaptor.forClass(Account.class);
@@ -61,12 +61,12 @@ class AccountRepositoryTest {
         l.add("master");
         l.add("paypal");
 
-        Account account = new Account(123, "any street number","myemail@gmail.com", l);
+        Account account = new Account("any street number","myemail@gmail.com", l);
         testRepo.save(account);
-        testRepo.findById(account.getId());
+        testRepo.findByEmail(account.getEmail());
 
         ArgumentCaptor<Account> arg = ArgumentCaptor.forClass(Account.class);
-        verify(testRepo).findById(account.getId());
+        verify(testRepo).findByEmail(account.getEmail());
     }
 
 }

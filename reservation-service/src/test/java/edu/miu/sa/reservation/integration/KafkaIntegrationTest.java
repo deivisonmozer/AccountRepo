@@ -39,7 +39,7 @@ public class KafkaIntegrationTest {
     public void should_publish() throws InterruptedException {
         List<String> l = new ArrayList<>();
         l.add("visa");
-        Account account = new Account(123, "any street number","myemail@gmail.com", l);
+        Account account = new Account("any street number","myemail@gmail.com", l);
         kafkaService.send(topicGet, account);
     }
 }

@@ -14,8 +14,8 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
 
-    public Optional<Account> findById(int id) {
-        return accountRepository.findById(id);
+    public Optional<Account> findByEmail(String email) {
+        return accountRepository.findByEmail(email);
     }
 
     public List<Account> findAll() {
@@ -24,9 +24,5 @@ public class AccountService {
 
     public void save(Account account) {
         accountRepository.save(account);
-    }
-
-    public void deleteById(int id) {
-        accountRepository.deleteById(id);
     }
 }

@@ -32,21 +32,9 @@ class AccountServiceApplicationTests {
 		l.add("visa");
 		l.add("master");
 		l.add("paypal");
-		Account account = new Account(123, "any street number","myemail@gmail.com", l);
-		when(accountRepository.findById(account.getId())).thenReturn(Optional.of(account));
-		assertThat(service.findById(account.getId())).isEqualTo(account);
-	}
-
-	@Test
-	void should_throw_exception() {
-		List<String> l = new ArrayList<>();
-		l.add("visa");
-		Account account = new Account(123, "any street number","myemail@gmail.com", l);
-		when(accountRepository.findById(account.getId())).thenReturn(Optional.ofNullable(null));
-		assertThatThrownBy(() -> service.findById(account.getId()))
-				.isInstanceOf(RuntimeException.class)
-				.hasMessage("Cannot find reservation: " + account.getId());
-
+		Account account = new Account("any street number","myemail@gmail.com", l);
+		when(accountRepository.findByEmail(account.getEmail())).thenReturn(Optional.of(account));
+		assertThat(service.findByEmail(account.getEmail())).isEqualTo(Optional.of(account));
 	}
 
 	@Test

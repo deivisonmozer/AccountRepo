@@ -15,8 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 @Table
 public class Account {
+
+    //private int id;
     @PrimaryKey
-    private int id;
     private String email;
     private String address;
     @Column
